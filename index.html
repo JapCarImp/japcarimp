@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>JapCarImp — Japanese Car Imports in Cyprus</title>
+<meta name="description" content="JapCarImp (JCI) imports and sells high‑quality Japanese cars in Cyprus. WhatsApp +357 95594030. Import on demand for Japanese, European, American and Korean vehicles." />
+<link rel="icon" href="/favicon.ico">
+<style>
+  :root{ --ink:#121417; --muted:#5b6675; --paper:#f7f4ef; --panel:#ffffff; --line:#e8e3da; --accent:#c4151c; --accent-2:#0f2a46; --radius:16px; --shadow:0 10px 35px rgba(15,20,30,.08); }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;color:var(--ink);background:radial-gradient(900px 900px at 120% -10%, rgba(196,21,28,.08), transparent 60%), var(--paper);font:16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1200px;margin:auto;padding:22px}
+  header{position:sticky;top:0;z-index:20;backdrop-filter:saturate(180%) blur(8px);background: color-mix(in oklab, var(--paper) 70%, transparent);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:18px}
+  .brand{display:flex;align-items:center;gap:10px}
+  .logo{width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 40% 40%, #ff6066, var(--accent));box-shadow:0 0 0 6px color-mix(in oklab, var(--accent) 20%, transparent)}
+  .brand h1{margin:0;font-size:18px;font-weight:900}
+  .brand .jci{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;background:var(--accent);color:#fff;font-size:12px;letter-spacing:.5px}
+  .navlinks{display:flex;align-items:center;gap:18px}
+  .navlinks a{opacity:.85}
+  .navlinks a:hover{opacity:1}
+  .btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;border-radius:999px;padding:10px 16px;box-shadow:var(--shadow);border:1px solid #00000010}
+  .btn.outline{background:#fff;color:var(--ink);border:1px solid var(--line)}
+
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:28px 0 18px}
+  .headline{padding:24px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg, #fff, #faf7f2);box-shadow:var(--shadow)}
+  .headline h2{font-size:48px;line-height:1.05;margin:.1em 0 .4em}
+  .headline p{color:var(--muted);margin:0 0 18px}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+  .visual{position:relative;min-height:360px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:#fff}
+  .visual .sun{position:absolute;right:-40px;top:10px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle at 65% 35%, rgba(196,21,28,.2), rgba(196,21,28,.2) 60%, rgba(196,21,28,.22)), url('https://images.unsplash.com/photo-1526481280698-8fcc13fd1b39?q=80&w=1400&auto=format&fit=crop') center/cover no-repeat;mix-blend-mode:multiply;filter:saturate(.95) contrast(1.05)}
+  .visual::after{content:"";position:absolute;inset:0;background-image:linear-gradient(transparent 0 98%, rgba(0,0,0,.03) 99%),linear-gradient(90deg, transparent 0 98%, rgba(0,0,0,.03) 99%);background-size:22px 22px;pointer-events:none}
+  .tiles{position:absolute;left:24px;bottom:22px;display:flex;gap:12px;z-index:1}
+  .tile{width:120px;height:60px;border-radius:10px;background:#dee7ef}
+  .tile:nth-child(2){background:#e9e0d3}
+  .tile:nth-child(3){background:#d5e6e1}
+  .cars{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:18px;padding:0 12px 14px;z-index:2}
+  .car{width:min(34%, 360px);aspect-ratio:16/9;border-radius:14px;background:#0a0c10;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.25);border:1px solid #101418}
+  .car img{width:100%;height:100%;object-fit:cover}
+
+  h3.section{margin:26px 0 10px;font-size:24px}
+  .filters{margin-top:8px;display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+  .filters select,.filters input{width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink)}
+  .inventory{margin-top:16px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  .card{background:linear-gradient(180deg, #fff, #faf7f2);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+  .card .img{aspect-ratio:16/9;position:relative;background:#0d0f13}
+  .tag{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.58);color:#fff;padding:6px 10px;border-radius:999px;font-size:12px}
+  .card .body{padding:14px}
+  .title{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .title h4{margin:0;font-size:18px}
+  .price{font-weight:800}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;color:var(--muted);font-size:14px;margin:8px 0 12px}
+  .actions{display:flex;gap:10px}
+  .ghost{background:#fff;border:1px dashed var(--line);border-radius:12px;padding:10px 14px}
+
+  .usps{margin:30px 0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .usp{padding:16px;border:1px solid var(--line);border-radius:14px;background:#fff}
+  .usp h5{margin:.2em 0 .2em;font-size:16px}
+  .usp p{margin:0;color:var(--muted);font-size:14px}
+
+  .cta-grid{display:grid;grid-template-columns:1fr;gap:16px;margin:10px 0 26px}
+  .cta{padding:18px;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:var(--shadow)}
+  .cta h4{margin:.2em 0 .4em}
+  .cta p{color:var(--muted);margin:.2em 0 1em}
+  .cta form{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .cta input,.cta select,.cta textarea{width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink)}
+  .cta textarea{grid-column:1/-1;min-height:90px;resize:vertical}
+
+  footer{margin:26px 0 40px}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px}
+  .logo-mark{display:flex;align-items:center;gap:10px}
+  .muted{color:var(--muted)}
+  .list{list-style:none;margin:0;padding:0}
+  .list li{margin:.4em 0}
+  .map{border:1px solid var(--line);border-radius:14px;min-height:220px;background:#fff;display:grid;place-items:center}
+
+  /* Floating buttons */
+  .wa{position:fixed;right:16px;bottom:16px;z-index:30}
+  .wa a{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:999px;background:#25D366;color:#000;font-weight:700;box-shadow:var(--shadow)}
+  .call{position:fixed;right:16px;bottom:72px;z-index:30}
+  .call a{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:999px;background:var(--ink);color:#fff;font-weight:700;box-shadow:var(--shadow)}
+  .call-sheet{position:fixed;inset:0;display:none;background:rgba(0,0,0,.35);z-index:50}
+  .call-card{position:absolute;right:16px;bottom:120px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:12px;min-width:260px}
+  .call-card a{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:6px 0}
+
+  /* Cookie banner */
+  .cookie{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 16px;display:flex;gap:12px;align-items:center;box-shadow:var(--shadow);z-index:40}
+  .cookie button{margin-left:auto}
+
+  @media (max-width: 1020px){
+    .hero{grid-template-columns:1fr}
+    .inventory{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .usps{grid-template-columns:repeat(2,1fr)}
+    .filters{grid-template-columns:repeat(3,1fr)}
+    .cars{gap:12px}
+  }
+  @media (max-width: 640px){
+    .headline h2{font-size:36px}
+    .inventory{grid-template-columns:1fr}
+    .filters{grid-template-columns:1fr 1fr}
+    .footer-grid{grid-template-columns:1fr}
+    .car{width:48%}
+    .visual .sun{width:280px;height:280px;right:-30px}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav" role="navigation" aria-label="Primary">
+    <a class="brand" href="#"><span class="logo" aria-hidden="true"></span><h1 id="brand">JapCarImp <span class="jci">JCI</span></h1></a>
+    <nav class="navlinks">
+      <a href="#inventory" data-i18n="nav.inventory">Inventory</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+      <a class="btn" href="#inventory" aria-label="View our inventory" data-i18n="cta.inventory">Our Inventory</a>
+      <a class="btn outline" href="tel:+35795594030" aria-label="Call Ilya">Call</a>
+      <button id="langBtn" class="btn outline" aria-label="Change language">EN</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="headline">
+      <h2 id="hero-title" data-i18n="hero.title">Japanese Car<br>Imports in Cyprus</h2>
+      <p data-i18n="hero.subtitle">From city-friendly <strong>Honda Fit</strong> and <strong>Nissan Note</strong> to premium <strong>BMW</strong> and <strong>Lexus</strong> — verified history, quick registration, financing available.</p>
+      <div class="cta-row">
+        <a class="btn" href="#inventory">Our Inventory</a>
+        <a class="btn outline" href="#import">Import on Demand</a>
+      </div>
+    </div>
+    <div class="visual" role="img" aria-label="Cars with a Japanese rising sun motif over a Cyprus coast">
+      <div class="sun" aria-hidden="true"></div>
+      <div class="tiles"><div class="tile"></div><div class="tile"></div><div class="tile"></div></div>
+      <div class="cars">
+        <div class="car"><img src="https://images.unsplash.com/photo-1550353127-b0da3aeaa0ca?q=80&w=1600&auto=format&fit=crop" alt="Honda Fit front view"></div>
+        <div class="car"><img src="https://images.unsplash.com/photo-1542367597-8849eb47a8ce?q=80&w=1600&auto=format&fit=crop" alt="BMW 3 Series front view"></div>
+        <div class="car"><img src="https://images.unsplash.com/photo-1549921296-3b4a6b2c5b4a?q=80&w=1600&auto=format&fit=crop" alt="BMW sedan front view"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="inventory" aria-labelledby="inventory-title">
+    <h3 id="inventory-title" class="section" data-i18n="sections.inventory">Inventory</h3>
+    <div class="filters" role="search" id="filters">
+      <select id="make"><option value="">Make (All)</option><option>Honda</option><option>Nissan</option><option>Subaru</option><option>BMW</option><option>Lexus</option></select>
+      <select id="body"><option value="">Body (All)</option><option>Hatchback</option><option>Sedan</option><option>SUV</option></select>
+      <select id="trans"><option value="">Transmission (All)</option><option>Automatic</option><option>Hybrid CVT</option></select>
+      <select id="price"><option value="">Max Price</option><option value="10000">€10,000</option><option value="15000">€15,000</option><option value="20000">€20,000</option><option value="30000">€30,000</option></select>
+      <input id="q" type="search" placeholder="Search (e.g., 2018, leather, low km)" aria-label="Free text search" />
+      <button class="ghost" id="clear">Clear</button>
+    </div>
+    <div class="inventory" id="grid" aria-live="polite"></div>
+  </section>
+
+  <section class="usps" aria-label="About JapCarImp" id="about">
+    <div class="usp" style="grid-column:1/-1">
+      <h5>About JapCarImp</h5>
+      <p>We are a Cyprus-based importer with several years of experience in the Japanese automotive market. For the past <strong>3 years</strong>, we’ve supplied both individuals and organizations with <strong>high‑quality, carefully inspected</strong> vehicles sourced from trusted Japanese auctions. We handle sourcing, inspection, shipping, registration, and on‑island support.</p>
+    </div>
+    <div class="usp"><h5>Verified Import History</h5><p>Trusted Japanese auctions with export docs & mileage checks.</p></div>
+    <div class="usp"><h5>12-Month Warranty</h5><p>Engine & drivetrain; optional extended coverage.</p></div>
+    <div class="usp"><h5>On-Island Service</h5><p>Partner garages across Cyprus for routine service & parts.</p></div>
+    <div class="usp"><h5>Finance & Trade-In</h5><p>Monthly plans; part-exchange to lower your cost.</p></div>
+  </section>
+
+  <section class="cta-grid" id="import">
+    <div class="cta" id="leadBox" style="grid-column:1/-1">
+      <h4>Can’t see your car? We’ll import it.</h4>
+      <p>Tell us what you want — we’ll source, inspect, ship, register, and deliver.</p>
+      <form id="leadForm" aria-label="Import on demand form">
+        <input type="text" id="name" placeholder="Your name" required />
+        <input type="email" id="email" placeholder="Email (japcarimp@gmail.com)" required />
+        <input type="tel" id="phone" placeholder="Phone (Cyprus)" />
+        <select id="desiredMake">
+          <option value="" disabled selected>Preferred Make</option>
+          <option>Honda</option><option>Toyota</option><option>Nissan</option><option>Mazda</option><option>Subaru</option><option>Lexus</option><option>Mitsubishi</option><option>Suzuki</option>
+          <option>BMW</option><option>Mercedes-Benz</option><option>Audi</option><option>Volkswagen</option><option>Skoda</option><option>SEAT</option><option>Volvo</option><option>Peugeot</option><option>Renault</option><option>Opel</option>
+          <option>Ford</option><option>Chevrolet</option><option>Dodge</option><option>Tesla</option><option>Jeep</option>
+          <option>Hyundai</option><option>Kia</option><option>Genesis</option>
+        </select>
+        <input type="text" id="model" placeholder="Model / Year / Budget" />
+        <textarea id="details" placeholder="Must‑haves (km, trim, color, features)"></textarea>
+        <button class="btn" type="submit">Request quote</button>
+        <div class="muted" style="grid-column:1/-1;margin-top:6px">Or email us: <a href="mailto:japcarimp@gmail.com">japcarimp@gmail.com</a></div>
+        <div id="leadOutput" class="muted" style="grid-column:1/-1;margin-top:6px"></div>
+      </form>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="footer-grid">
+      <div>
+        <div class="logo-mark"><span class="logo" aria-hidden="true"></span><div><strong>JapCarImp <span class="jci">JCI</span></strong><br /><span class="muted">Japanese Car Imports • Cyprus</span></div></div>
+        <p class="muted" style="margin-top:10px">Reliable stock, transparent imports, and a friendly team to guide you from pick to plates.</p>
+      </div>
+      <div>
+        <strong>Contact</strong>
+        <ul class="list muted">
+          <li>WhatsApp: <a href="https://wa.me/35795594030" target="_blank" rel="noopener">+357 95594030</a></li>
+          <li>Call Ilya: <a href="tel:+35795594030">+357 95594030</a></li>
+          <li>Call Vadim: <a href="tel:+35797755921">+357 97755921</a></li>
+          <li>Email: <a href="mailto:japcarimp@gmail.com">japcarimp@gmail.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Social</strong>
+        <ul class="list muted">
+          <li><a href="https://wa.me/35795594030" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="#" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="#" target="_blank" rel="noopener">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="map" role="img" aria-label="Map — embed your Google Map here">
+      <span class="muted">[ Replace with Google Maps iframe ]</span>
+    </div>
+    <p class="muted" style="font-size:13px">© <span id="year"></span> JapCarImp. All rights reserved. All trademarks, logos, and brand names are the property of their respective owners.</p>
+  </footer>
+</main>
+
+<!-- Floating actions -->
+<div class="wa"><a id="waLink" href="https://wa.me/35795594030" target="_blank" rel="noopener">WhatsApp us</a></div>
+<div class="call"><a href="#" id="callBtn">Call us</a></div>
+<div class="call-sheet" id="callSheet">
+  <div class="call-card">
+    <strong>Call JapCarImp</strong>
+    <a href="tel:+35795594030">Ilya <span>+357 95594030</span></a>
+    <a href="tel:+35797755921">Vadim <span>+357 97755921</span></a>
+    <a href="mailto:japcarimp@gmail.com">Email <span>japcarimp@gmail.com</span></a>
+  </div>
+</div>
+
+<!-- Cookie banner (GDPR/EU) -->
+<div class="cookie" id="cookie" style="display:none">
+  <span>This site uses cookies for analytics.</span>
+  <button class="btn outline" id="cookieOk">OK</button>
+</div>
+
+<script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Basic i18n (EN/EL/RU) for top UI
+  const I18N = {
+    en:{'nav.inventory':'Inventory','nav.about':'About','nav.contact':'Contact','cta.inventory':'Our Inventory','cta.import':'Import on Demand','hero.title':'Japanese Car\nImports in Cyprus','hero.subtitle':'From city-friendly <strong>Honda Fit</strong> and <strong>Nissan Note</strong> to premium <strong>BMW</strong> and <strong>Lexus</strong> — verified history, quick registration, financing available.'},
+    el:{'nav.inventory':'Απόθεμα','nav.about':'Σχετικά','nav.contact':'Επικοινωνία','cta.inventory':'Το Απόθεμά μας','cta.import':'Εισαγωγή κατ’ απαίτηση','hero.title':'Ιαπωνικά Αυτοκίνητα\nστην Κύπρο','hero.subtitle':'Από το <strong>Honda Fit</strong> και το <strong>Nissan Note</strong> έως <strong>BMW</strong> και <strong>Lexus</strong> — ελεγμένο ιστορικό, γρήγορη ταξινόμηση, χρηματοδότηση.'},
+    ru:{'nav.inventory':'Наличие','nav.about':'О нас','nav.contact':'Контакты','cta.inventory':'Наши автомобили','cta.import':'Импорт под заказ','hero.title':'Импорт японских авто\nна Кипр','hero.subtitle':'От городских <strong>Honda Fit</strong> и <strong>Nissan Note</strong> до премиальных <strong>BMW</strong> и <strong>Lexus</strong> — проверенная история, быстрая регистрация, финансирование.'}
+  };
+  let curLang = 'en';
+  function applyI18n(lang){
+    const dict = I18N[lang] || I18N.en;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(dict[key]){
+        if(key.includes('subtitle')) el.innerHTML = dict[key]; else el.textContent = dict[key];
+      }
+    });
+    document.getElementById('langBtn').textContent = lang.toUpperCase();
+  }
+  document.getElementById('langBtn').addEventListener('click', ()=>{ curLang = (curLang==='en')?'el':(curLang==='el')?'ru':'en'; applyI18n(curLang); });
+  applyI18n(curLang);
+
+  // Cookie banner (simple consent)
+  (function(){ const el = document.getElementById('cookie'); if(localStorage.getItem('cookie-ok')) return; el.style.display='flex'; document.getElementById('cookieOk').onclick=()=>{ localStorage.setItem('cookie-ok','1'); el.style.display='none'; }; })();
+
+  // Call chooser
+  (function(){ const sheet = document.getElementById('callSheet'); const btn = document.getElementById('callBtn'); btn.addEventListener('click',(e)=>{e.preventDefault(); sheet.style.display='block';}); sheet.addEventListener('click',(e)=>{ if(e.target===sheet) sheet.style.display='none'; });})();
+
+  // Inventory data from your provided ads
+  const cars = [
+    {id:'note-2020', make:'Nissan', model:'Note e-Power', year:2020, body:'Hatchback', trans:'Automatic', price:11250, km:80000, fuel:'Hybrid Petrol', color:'Silver', img:'https://images.unsplash.com/photo-1593946460602-8b5f2f375008?q=80&w=1600&auto=format&fit=crop', tag:'Hybrid', features:['360° camera','Lane Assist','Keyless start','Parking sensors']},
+    {id:'fit-2021', make:'Honda', model:'Fit Hybrid', year:2021, body:'Hatchback', trans:'Automatic', price:12500, km:81400, fuel:'Hybrid Petrol', color:'White', img:'https://images.unsplash.com/photo-1550353127-b0da3aeaa0ca?q=80&w=1600&auto=format&fit=crop', tag:'Full package', features:['Adaptive cruise','Lane assist','2 keys','Winter+summer rims']},
+    {id:'forester-2021', make:'Subaru', model:'Forester Hybrid 2.0L', year:2021, body:'SUV', trans:'Automatic', price:21000, km:77900, fuel:'Hybrid Petrol', color:'Black', img:'https://images.unsplash.com/photo-1549921296-3b4a6b2c5b4a?q=80&w=1600&auto=format&fit=crop', tag:'AWD • Grade 4', features:['Adaptive cruise','AEB','Lane assist','Front & rear radar']}
+  ];
+
+  const grid = document.getElementById('grid');
+  const controls = { make: document.getElementById('make'), body: document.getElementById('body'), trans: document.getElementById('trans'), price: document.getElementById('price'), q: document.getElementById('q') };
+  function euro(n){ return '€' + n.toLocaleString('en-US'); }
+  function card(c){
+    const el = document.createElement('article'); el.className = 'card'; el.setAttribute('tabindex','0');
+    el.innerHTML = `
+      <div class="img">
+        <img src="${c.img}" alt="${c.year} ${c.make} ${c.model}" loading="lazy" />
+        <span class="tag">${c.tag}</span>
+      </div>
+      <div class="body">
+        <div class="title"><h4>${c.year} ${c.make} ${c.model}</h4><div class="price">${euro(c.price)}</div></div>
+        <div class="meta"><span>${c.body}</span><span>•</span><span>${c.trans}</span><span>•</span><span>${c.km.toLocaleString()} km</span><span>•</span><span>${c.fuel}</span></div>
+        <div class="muted" style="margin-bottom:12px">${(c.features||[]).slice(0,4).join(' • ')}</div>
+        <div class="actions">
+          <a class="btn" href="#import" onclick="prefill('${c.make} ${c.model} ${c.year}')">Enquire</a>
+          <button class="ghost" onclick="saveFav('${c.id}')">♡ Save</button>
+        </div>
+      </div>`;
+    return el;
+  }
+  function render(){
+    grid.innerHTML = '';
+    const max = +controls.price.value || Infinity;
+    const q = controls.q.value.trim().toLowerCase();
+    const result = cars.filter(c=>{
+      const ok = (!controls.make.value || c.make===controls.make.value) && (!controls.body.value || c.body===controls.body.value) && (!controls.trans.value || c.trans===controls.trans.value) && (c.price <= max) && (!q || [c.make,c.model,c.body,c.trans,c.fuel,String(c.year),String(c.km),...(c.features||[])].join(' ').toLowerCase().includes(q));
+      return ok; });
+    if(result.length===0){ const empty=document.createElement('div'); empty.className='muted'; empty.style.padding='16px'; empty.textContent='No cars match your filters. Try clearing or adjusting the price.'; grid.appendChild(empty); } else { result.forEach(c=>grid.appendChild(card(c))); }
+  }
+  document.getElementById('clear').addEventListener('click', ()=>{ controls.make.value='';controls.body.value='';controls.trans.value='';controls.price.value='';controls.q.value=''; render(); });
+  Object.values(controls).forEach(el=>el.addEventListener('input', render));
+
+  // Lead capture demo
+  function prefill(text){ document.getElementById('model').value = text; document.getElementById('details').focus(); }
+  document.getElementById('leadForm').addEventListener('submit',(e)=>{ e.preventDefault(); const name=document.getElementById('name').value.trim(); const make=document.getElementById('desiredMake').value||'Any'; const model=document.getElementById('model').value.trim(); document.getElementById('leadOutput').textContent = `Thanks ${name}! We’ll contact you with options for ${make}${model?(' '+model):''}.`; e.target.reset(); });
+
+  // Favourites
+  function saveFav(id){ const favs = new Set(JSON.parse(localStorage.getItem('favs')||'[]')); favs.add(id); localStorage.setItem('favs', JSON.stringify([...favs])); alert('Saved to favourites.'); }
+
+  // Initial render
+  render();
+</script>
+</body>
+</html>
